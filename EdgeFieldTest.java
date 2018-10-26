@@ -1,7 +1,6 @@
 import org.junit.Test;
 import java.io.*;
 
-
 public class EdgeFieldTest{
     @Test
     public void FiledsTest() {
@@ -30,7 +29,7 @@ public class EdgeFieldTest{
         fields.setTableID(1);
         fields.getTableID();
 
-        fields.setTableBound(416,480,672,544);
+        fields.setTableBound(416,480,672,544); //these numbers are from the Courses.edg file Figure 1 (Student)
         fields.getTableBound();
 
         fields.setFieldBound(128,576,384,640);
