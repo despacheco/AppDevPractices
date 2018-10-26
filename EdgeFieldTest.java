@@ -44,7 +44,7 @@ public class EdgeFieldTest{
         fields.setDefaultValue(StudentSSN);
         fields.getDefaultValue();
 
-        fields.setVarcharValue(int value);
+        fields.setVarcharValue(50);
         fields.getVarcharValue();
 
         fields.setDataType(1);
