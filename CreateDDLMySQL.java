@@ -98,6 +98,7 @@ public class CreateDDLMySQL extends EdgeConvertCreateDDL {
             }
          }
       }
+
    }
 
    protected int convertStrBooleanToInt(String input) { //MySQL uses '1' and '0' for boolean types
