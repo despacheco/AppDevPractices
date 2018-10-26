@@ -1,11 +1,12 @@
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.Before;
 import java.io.*;
 
-public class EdgeFieldTest{
-    @Test
-    public void FiledsTest() {
 
-        EdgeField fields = new EdgeField(
+public class EdgeFieldTest{
+
+    EdgeField fields = new EdgeField(
             "Figure 7" +
             "{" +
             "Style 'Attribute' " +
@@ -23,34 +24,69 @@ public class EdgeFieldTest{
             "}"
         );
 
-        fields.getNumFigure();
-        fields.getName();
-
-        fields.setTableID(1);
-        fields.getTableID();
-
-        fields.setTableBound(416,480,672,544); //these numbers are from the Courses.edg file Figure 1 (Student)
-        fields.getTableBound();
-
-        fields.setFieldBound(128,576,384,640);
-        fields.getFieldBound();
-
-        fields.setDisallowNull(false);
-        fields.getDisallowNull();
-
-        fields.setIsPrimaryKey(true);
-        fields.getIsPrimaryKey(); 
-
-        fields.setDefaultValue(StudentSSN);
-        fields.getDefaultValue();
-
-        fields.setVarcharValue(50);
-        fields.getVarcharValue();
-
-        fields.setDataType(1);
-        fields.getDataType();
-
-        fields.getStrDataType();
-        fields.toString();
+    @Before
+    public void setUp()
+    {
+       String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
     }
+
+    @Test
+    public void testNumFigure(){
+        fields.getNumFigure();
+        assertEquals("7",fields.getNumFigure());
+    }
+    
+    @Test
+    public void testGetName(){
+        fields.getName();
+        assertEquals("StudentSSN",fields.getName());
+    }
+    
+    @Test
+    public void testSetTableID(){
+        fields.setTableID(1);
+        assertEquals(1,fields.getTableID());
+    }
+    
+    @Test
+    public void testSetDisallowNull(){
+        fields.setDisallowNull(true);
+        assertEquals(true,fields.getDisallowNull());
+    }
+    
+    @Test
+    public void testSetIsPrimaryKey(){
+        fields.setIsPrimaryKey(true);
+        assertEquals(true,fields.getIsPrimaryKey());
+    }
+     @Test
+    public void testSetDefaultValue(){
+        fields.setDefaultValue("1234567890123456");
+        assertEquals("1234567890123456",fields.getDefaultValue());
+    }
+
+    @Test
+    public void testSetVarcharValue(){
+        fields.setVarcharValue(16);
+        assertEquals(16,fields.getVarcharValue());
+    }
+    
+    @Test
+    public void testDataType(){
+        fields.setDataType(1);
+        assertEquals(1,fields.getDataType());
+    
+        assertEquals("VARCHAR",EdgeField.getStrDataType());
+    }
+    
+    @Test
+    public void testToString(){
+        assertEquals("7|StudentSSN|1|1|16|true|true|1234567890123456",fields.toString());
+    }
+    
 }
+
+// Run test in terminal
+// javac -cp .:junit-4.12.jar EdgeFieldTest.java
+// javac EdgeField.java
+// java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar \org.junit.runner.JUnitCore EdgeFieldTest
