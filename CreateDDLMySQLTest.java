@@ -21,12 +21,34 @@ public class CreateDDLMySQLTest
    }
    
    @Test
-   public void evaluateCreatedDDL()
-   {
-      StringBuffer sb = new StringBuffer();
-      test1.createDDL();
-      assertEquals("Create DDL:",sb,test1.getSQLString());
+   public void testConvertStrBooleanToInt(String input){
+       assertEquals("Convert Str Boolen should be true", 1,test1.convertStrBooleanToInt("true"));
    }
+
+   @Test
+   public void testGenerateDatabaseName(){
+       assertEquals("Generated DB should be: ","MySQLDB",test1.generateDatabaseName());
+   }
+
+   @Test
+   public void testGetDatabaseName(){
+       assertEquals("DB name should be: ", "MySQLDB", test1.getDatabaseName());
+   }
+
+   @Test
+   public void testGetProductName(){}
+
+   @Test
+   public void getSQLString(){}
+
+   
+//    @Test
+//    public void evaluateCreatedDDL()
+//    {
+//       StringBuffer sb = new StringBuffer();
+//       test1.createDDL();
+//       assertEquals("Create DDL:",sb,test1.getSQLString());
+//    }
 	// @Test
 // 	public void evaluatesExpression() 
 // 	{
