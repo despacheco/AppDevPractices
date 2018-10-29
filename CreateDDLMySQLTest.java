@@ -5,62 +5,105 @@ import org.junit.After;
 
 
 public class CreateDDLMySQLTest 
-{  EdgeTable table1;
-   //table1.makeArrays();
-   //EdgeTable table2 = new EdgeTable("2|FACULTY");
-   //EdgeTable table3 = new EdgeTable("13|COURSES");
-   //EdgeTable [] tables = {table1,table2,table3};
-   EdgeTable [] tables = {table1};
-
-   EdgeField field1 = new EdgeField("3|Grade");
-   EdgeField field2 = new EdgeField("4|CourseName");
-   EdgeField [] fields = {field1,field2};
-   //EdgeConvertCreateDDL edgeConvert = new EdgeConvertCreateDDL(tables, fields);
-   //CreateDDLMySQL test1 = new CreateDDLMySQL(tables,fields);
-   EdgeConvertCreateDDL test1;
-   
-   @Before
-   public void init()
-   {
-      table1= new EdgeTable("1|STUDENT");
-      table1.makeArrays();
-      table1.setRelatedField(0,0);
-
-   }
+{  
+   CreateDDLMySQL test1 = new CreateDDLMySQL();
    
    @Test
-   public void evaluateCreatedDDL()
-   {  
-      test1 = new CreateDDLMySQL(tables, fields);
-      test1.createDDL();
-      String actual = test1.getDatabaseName();
-      String expected = "MYSQL";
-      assertEquals("Name of the database:", expected,actual);
+   public void testConvertStrBooleanToInt(){
+       assertEquals("Convert Str Boolen should be true", 1,test1.convertStrBooleanToInt("true"));
+   }
 
-      
-   }   
-   // public void testConvertStrBooleanToInt(String input){
-//        assertEquals("Convert Str Boolen should be true", 1,test1.convertStrBooleanToInt("true"));
-//    }
-// 
-//    @Test
-//    public void testGenerateDatabaseName(){
-//        assertEquals("Generated DB should be: ","MySQLDB",test1.generateDatabaseName());
-//    }
-// 
-//    @Test
-//    public void testGetDatabaseName(){
-//        assertEquals("DB name should be: ", "MySQLDB", test1.getDatabaseName());
-//    }
+   @Test
+   public void testGenerateDatabaseName(){
+       assertEquals("Generated DB should be: ","MySQLDB",test1.generateDatabaseName());
+   }
 
-   // @Test
-//    public void testGetProductName(){}
-// 
-//    @Test
-//    public void getSQLString(){}
+   @Test
+   public void testGetDatabaseName(){
+       assertEquals("DB name should be: ", "MySQLDB", test1.getDatabaseName());
+   }
+
+   @Test
+   public void testGetProductName(){
+       assertEquals("MySQL", test1.getProductName());
+   }
+
+   @Test
+   public void getSQLString(){
+       assertEquals("There should be an SQL string. ",test1.getSQLString());
+   }
 }
 
-// Run test in terminal
-// javac -cp .:junit-4.12.jar CreateDDLMySQLTest.java
-// javac CreateDDLMySQL.java
-// java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar \org.junit.runner.JUnitCore CreateDDLMySQLTest
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// import static org.junit.Assert.assertEquals;
+// import org.junit.Test;
+// import org.junit.Before;
+// import org.junit.After;
+
+
+// public class CreateDDLMySQLTest 
+// {  EdgeTable table1;
+//    //table1.makeArrays();
+//    //EdgeTable table2 = new EdgeTable("2|FACULTY");
+//    //EdgeTable table3 = new EdgeTable("13|COURSES");
+//    //EdgeTable [] tables = {table1,table2,table3};
+//    EdgeTable [] tables = {table1};
+
+//    EdgeField field1 = new EdgeField("3|Grade");
+//    EdgeField field2 = new EdgeField("4|CourseName");
+//    EdgeField [] fields = {field1,field2};
+//    //EdgeConvertCreateDDL edgeConvert = new EdgeConvertCreateDDL(tables, fields);
+//    //CreateDDLMySQL test1 = new CreateDDLMySQL(tables,fields);
+//    EdgeConvertCreateDDL test1;
+   
+//    @Before
+//    public void init()
+//    {
+//       table1= new EdgeTable("1|STUDENT");
+//       table1.makeArrays();
+//       table1.setRelatedField(0,0);
+
+//    }
+   
+//    @Test
+//    public void evaluateCreatedDDL()
+//    {  
+//       test1 = new CreateDDLMySQL(tables, fields);
+//       test1.createDDL();
+//       String actual = test1.getDatabaseName();
+//       String expected = "MYSQL";
+//       assertEquals("Name of the database:", expected,actual);
+
+      
+//    }   
+//    // public void testConvertStrBooleanToInt(String input){
+// //        assertEquals("Convert Str Boolen should be true", 1,test1.convertStrBooleanToInt("true"));
+// //    }
+// // 
+// //    @Test
+// //    public void testGenerateDatabaseName(){
+// //        assertEquals("Generated DB should be: ","MySQLDB",test1.generateDatabaseName());
+// //    }
+// // 
+// //    @Test
+// //    public void testGetDatabaseName(){
+// //        assertEquals("DB name should be: ", "MySQLDB", test1.getDatabaseName());
+// //    }
+
+//    // @Test
+// //    public void testGetProductName(){}
+// // 
+// //    @Test
+// //    public void getSQLString(){}
+// }
+
+// // Run test in terminal
+// // javac -cp .:junit-4.12.jar CreateDDLMySQLTest.java
+// // javac CreateDDLMySQL.java
+// // java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar \org.junit.runner.JUnitCore CreateDDLMySQLTest
