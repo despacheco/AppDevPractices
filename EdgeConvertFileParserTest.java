@@ -9,6 +9,8 @@ import java.net.URL;
 
 public class EdgeConvertFileParserTest
 {
+    EdgeConvertFileParser et = new EdgeConvertFileParser("Courses.edg");
+
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
     public final File coursesFile = new File("Courses.edg"); 
@@ -20,15 +22,23 @@ public class EdgeConvertFileParserTest
         assertTrue(courseFile.exists());
     }
 
+    @Test
     public void testReadFileWithResource() {
         URL url = this.getClass().getResource("Courses.edg");
         File coursesFile = new File(url.getFile());
         assertTrue(coursesFile.exists());
     }
 
+    @Test
     public void testReadFileWithResource2() throws IOException {
         InputStream inStream = this.getClass().getResourceAsStream("Courses.edg");
         assertNotNull(inStream);
+    }
+
+    @Test
+    public void testGetTables(EdgeTable et) {
+        et.getEdgeTables();
+        assertEquals("Table should be: ","STUDENT",et.getEdgeTables());
     }
 
 }
