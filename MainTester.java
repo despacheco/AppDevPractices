@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /* File to run all of the tests */
 
 public class MainTester {
@@ -43,6 +45,29 @@ public class MainTester {
                 //Retrieve the object if it was provided otherwise provide a default object
                 if(fIndex != -1) {
                     String testObjectFile = args[fIndex + 1];
+
+                    Scanner read = new Scanner (new File(testObjectFile));
+                    read.useDelimiter("|");
+                    int fieldNum, tableNum;
+                    String fieldName, tableName;
+
+                    while(read.hasNext())
+                    {
+                        tableNum = read.next();
+                        tableName = read.next();
+                        fieldNum = read.next(); 
+                        fieldName = read.next();
+
+                        if(tableNum=0 && !tableName.isEmpty())
+                        {
+                            EdgeFieldTest(tableNum+"|"+tableName+"|"+fieldNum+"|"+fieldName);
+                        }
+
+                        if(fieldNum=0 && !fieldName.isEmpty())
+                        {
+                            EdgeTableTest(tableNum+"|"+tableName+"|"+fieldNum+"|"+fieldName);
+                        }
+                    }
                 }
                 else {
                     //TODO: Provide a default test file
