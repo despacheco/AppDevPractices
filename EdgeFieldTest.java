@@ -6,13 +6,16 @@ import java.io.*;
 
 public class EdgeFieldTest{
 
-    EdgeField fields = new EdgeField("7|Student");
+    String numAndName =  Integer.toString(MainTester.num) + "|" + MainTester.name;
+    EdgeField fields = new EdgeField(numAndName);
 
-    @Before
-    public void setUp()
-    {
-       String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
-    }
+    //I don't think the below is needed
+    // @Before
+    // public void setUp()
+    // {
+    //    String[] strDataType = {"VARCHAR", "BOOL", "INT", "DOUBLE"};
+
+    // }
 
     @Test
     public void testNumFigure(){
@@ -60,8 +63,6 @@ public class EdgeFieldTest{
         assertEquals("Data Type should be: ",1,fields.getDataType());
     }
 }
-
 // Run test in terminal
 // javac -cp .:junit-4.12.jar EdgeFieldTest.java
-// javac EdgeField.java
-// java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar \org.junit.runner.JUnitCore EdgeFieldTest
+// java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore EdgeFieldTest
