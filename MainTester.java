@@ -4,15 +4,19 @@ public class MainTester {
     public static void main (String[] args) {
         int nIndex = -1;
         int fIndex = -1;
+        boolean nExists = false;
+        boolean fExists = false;
 
         //Get the index of the arguments
         for(int i = 0; i <args.length; i++) {
             if(args[i].equals("-n")) {
                 nIndex = i;
+                nExists = true;
                 break;
             }
             if(args[i].equals("-f")) {
                 fIndex = i;
+                fExists = true;
                 break;
             }
         }
@@ -46,9 +50,13 @@ public class MainTester {
                 }
                 else {
                     //TODO: Provide a default test file
+                    String testObjectFile = "Data.txt";
                 }
             }
         }
+
+        //BEGIN TESTS
+        
     }
 
 }
