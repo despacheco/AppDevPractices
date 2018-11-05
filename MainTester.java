@@ -1,18 +1,24 @@
+import java.util.Scanner;
+
 /* File to run all of the tests */
 
 public class MainTester {
     public static void main (String[] args) {
         int nIndex = -1;
         int fIndex = -1;
+        boolean nExists = false;
+        boolean fExists = false;
 
         //Get the index of the arguments
         for(int i = 0; i <args.length; i++) {
             if(args[i].equals("-n")) {
                 nIndex = i;
+                nExists = true;
                 break;
             }
             if(args[i].equals("-f")) {
                 fIndex = i;
+                fExists = true;
                 break;
             }
         }
@@ -43,12 +49,39 @@ public class MainTester {
                 //Retrieve the object if it was provided otherwise provide a default object
                 if(fIndex != -1) {
                     String testObjectFile = args[fIndex + 1];
+
+                    Scanner read = new Scanner (new File(testObjectFile));
+                    read.useDelimiter("|");
+                    int fieldNum, tableNum;
+                    String fieldName, tableName;
+
+                    while(read.hasNext())
+                    {
+                        tableNum = read.next();
+                        tableName = read.next();
+                        fieldNum = read.next(); 
+                        fieldName = read.next();
+
+                        if(tableNum=0 && !tableName.isEmpty())
+                        {
+                            EdgeFieldTest(tableNum+"|"+tableName+"|"+fieldNum+"|"+fieldName);
+                        }
+
+                        if(fieldNum=0 && !fieldName.isEmpty())
+                        {
+                            EdgeTableTest(tableNum+"|"+tableName+"|"+fieldNum+"|"+fieldName);
+                        }
+                    }
                 }
                 else {
                     //TODO: Provide a default test file
+                    String testObjectFile = "Data.txt";
                 }
             }
         }
+
+        //BEGIN TESTS
+        
     }
 
 }
