@@ -23,8 +23,8 @@ public class MainTester {
             //-h prints a short help message on the console, telling what options are available and what they mean
             if(arg.equals("-h")) {
                 System.out.println("The following options are available for this program: ");
-                
-                //TODO: Determine options avaialable
+                System.out.println("Argument [-n]: What follows is the test object of your choice.");
+                System.out.println("Argument [-f]: What follows is the name of the test object file.");
             }
 
             //-n means that what follows is a test object
