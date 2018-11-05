@@ -5,27 +5,41 @@ import java.io.*;
 
 public class EdgeTableTest{
 
-    EdgeTable tableTest = new EdgeTable("1|Table");
+    private int numFig;
+    private String name;
+    private String test;
+    private int field;
+
+    public EdgeTableTest(int numFig, String name){
+
+        this.numFig = numFig;
+        this.name = name;
+        this.test = numFig+"|"+name;
+        this.field = 1;
+        
+    }
+
+    EdgeTable tableTest = new EdgeTable(this.test);
 
    	@Test
    public void evaluateNumFigure(){
 
-      assertEquals("Figure number is: ",1, tableTest.getNumFigure());
+      assertEquals("Figure number is: ",this.numFig, tableTest.getNumFigure());
 
    }
 
    @Test
    public void evaluateName(){
-        assertEquals("Table Name is: ","Table", tableTest.getName());
+        assertEquals("Table Name is: ",this.name, tableTest.getName());
    }
 
    @Test
    public void evaluateAddRelatedTable(){
-       tableTest.addRelatedTable(1);
+       tableTest.addRelatedTable(this.field);
        tableTest.makeArrays();
         
        int[] list = new int[1];
-       list[0] = 1;
+       list[0] = this.field;
         
        assertArrayEquals("Related Table is: ",list,tableTest.getRelatedTablesArray());
 
@@ -33,11 +47,11 @@ public class EdgeTableTest{
 
     @Test
        public void evaluateAddNativeField(){
-        tableTest.addNativeField(1);
+        tableTest.addNativeField(this.field);
         tableTest.makeArrays();
         
         int[] list = new int[1];
-        list[0] = 1;
+        list[0] = this.field;
         
          assertArrayEquals("Native Field is: ",list, tableTest.getNativeFieldsArray());
 
@@ -45,7 +59,7 @@ public class EdgeTableTest{
 
     @Test
     public void evaluateRelatedFields(){
-        tableTest.addNativeField(1);
+        tableTest.addNativeField(this.field);
         tableTest.makeArrays();
         int[] list = new int[1];
         list[0] = 0;
@@ -55,7 +69,7 @@ public class EdgeTableTest{
 
     @Test
     public void evaluateSetRelatedFields(){
-         tableTest.addNativeField(1);
+         tableTest.addNativeField(this.field);
          tableTest.makeArrays();
          tableTest.setRelatedField(0, 1);
          int[] list = new int[1];
