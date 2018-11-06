@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 /* File to run all of the tests */
 
@@ -40,10 +41,10 @@ public class MainTester {
                     String testObject = args[nIndex + 1];
                     String[] testValues = pipeDelimited.split("|");
 
-                    tableNum = testValues[0];
-                    tableName = testValues[1];
-                    fieldNum = testValues[2]; 
-                    fieldName = testValues[3];
+                    int tableNum = testValues[0];
+                    String tableName = testValues[1];
+                    int fieldNum = testValues[2]; 
+                    String fieldName = testValues[3];
                 }
                 else {
                     //Retrieve file to get default test objects
