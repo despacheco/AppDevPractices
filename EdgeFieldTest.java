@@ -6,8 +6,15 @@ import java.io.*;
 
 public class EdgeFieldTest{
 
-    String numAndName =  Integer.toString(MainTester.num) + "|" + MainTester.name;
-    EdgeField fields = new EdgeField(numAndName);
+    String numAndName;
+    EdgeField field;
+
+    public EdgeFieldTest(){
+        numAndName =  Integer.toString(MainTester.figureNum) + "|" + MainTester.figureName;
+        fields = new EdgeField(numAndName);
+    }
+    //String numAndName =  Integer.toString(MainTester.figureNum) + "|" + MainTester.figureName;
+    //EdgeField fields = new EdgeField(numAndName);
 
     //I don't think the below is needed
     // @Before
