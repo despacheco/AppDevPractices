@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.io.IOException;
+import java.io.File;
 
 /* File to run all of the tests */
 
@@ -41,9 +43,9 @@ public class MainTester {
                     String testObject = args[nIndex + 1];
                     String[] testValues = testObject.split("|");
 
-                    int tableNum = testValues[0];
+                    int tableNum = Integer.parseInt(testValues[0]);
                     String tableName = testValues[1];
-                    int fieldNum = testValues[2]; 
+                    int fieldNum = Integer.parseInt(testValues[2]); 
                     String fieldName = testValues[3];
                 }
                 else {
@@ -84,9 +86,9 @@ public class MainTester {
         String fieldName, tableName;
 
         while(read.hasNext()) {
-            tableNum = read.next();
+            tableNum = Integer.parseInt(read.next());
             tableName = read.next();
-            fieldNum = read.next(); 
+            fieldNum = Integer.parseInt(read.next()); 
             fieldName = read.next();
 
             if(fieldNum == 0 && !fieldName.isEmpty()) {
