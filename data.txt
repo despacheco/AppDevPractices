@@ -1,0 +1,12 @@
+0|""|1|studentID
+0|""|2|studentFirstName
+0|""|3|studentLastName
+0|""|4|studentSocial
+0|""|5|studentPhone
+0|""|6|studentAddress
+7|Courses|0|""|
+8|Student|0|""|
+9|Faculty|0|""|
+10|School|0|""|
+11|Country|0|""|
+12|Address|0|""|
