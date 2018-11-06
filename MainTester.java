@@ -39,7 +39,7 @@ public class MainTester {
                 //Retrieve the object if it was provided otherwise provide a default objects
                 if(nIndex != -1) {
                     String testObject = args[nIndex + 1];
-                    String[] testValues = pipeDelimited.split("|");
+                    String[] testValues = testObject.split("|");
 
                     int tableNum = testValues[0];
                     String tableName = testValues[1];
@@ -69,8 +69,8 @@ public class MainTester {
 
         JUnitCore jUnitCore = new JUnitCore();
         
-        Result result1 = jUnitCore.run(EdgeFieldTest.class);
-        Util.printResult(result1);
+        // Result result1 = jUnitCore.run(EdgeFieldTest.class);
+        // Util.printResult(result1);
 
         Result result2 = jUnitCore.run(EdgeTableTest.class);
         Util.printResult(result2);
