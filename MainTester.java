@@ -61,7 +61,7 @@ public class MainTester {
             }
         }
 
-        Result result = runClasses(EdgeFieldTest(), EdgeFieldTable());
+        Result result = runClasses(EdgeFieldTest.class, EdgeFieldTable.class);
         System.out.println(result);
     }
 
