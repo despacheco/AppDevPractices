@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import org.junit.runner.*;
 
 /* File to run all of the tests */
 
@@ -39,9 +38,16 @@ public class MainTester {
                 //Retrieve the object if it was provided otherwise provide a default objects
                 if(nIndex != -1) {
                     String testObject = args[nIndex + 1];
+                    String[] testValues = pipeDelimited.split("|");
+
+                    tableNum = testValues[0];
+                    tableName = testValues[1];
+                    fieldNum = testValues[2]; 
+                    fieldName = testValues[3];
                 }
                 else {
-                    //TODO: Provide a default test object
+                    //Retrieve file to get default test objects
+                    parseFile("data.txt");
                 }
             }
 
@@ -54,15 +60,19 @@ public class MainTester {
                     
                 }
                 else {
-                    //TODO: Provide a default test file
                     String testObjectFile = "Data.txt";
                     parseFile(testObjectFile);
                 }
             }
         }
 
-        Result result = runClasses(EdgeFieldTest.class, EdgeFieldTable.class);
-        System.out.println(result);
+        JUnitCore jUnitCore = new JUnitCore();
+        
+        Result result1 = jUnitCore.run(EdgeFieldTest.class);
+        Util.printResult(result1);
+
+        Result result2 = jUnitCore.run(EdgeTableTest.class);
+        Util.printResult(result2);
     }
 
     //Function to read test file
@@ -78,20 +88,10 @@ public class MainTester {
             fieldNum = read.next(); 
             fieldName = read.next();
 
-            if(tableNum == 0 && !tableName.isEmpty()) {
-                EdgeFieldTest();
-
-            }
-
             if(fieldNum == 0 && !fieldName.isEmpty()) {
                 EdgeTableTest(tableNum+"|"+tableName+"|"+fieldNum+"|"+fieldName);
             }
         }
-    }
-
-    //BEGIN TESTS
-    public static Result runClasses(Class<?>... classes) {
-        return new JUnitCore().run(classes);
     }
 
 }
