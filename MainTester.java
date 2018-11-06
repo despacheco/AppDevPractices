@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.io.IOException;
 import java.io.File;
+import org.junit.runner.JUnitCore;
 
 /* File to run all of the tests */
 
