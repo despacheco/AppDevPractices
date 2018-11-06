@@ -7,7 +7,7 @@ import java.io.*;
 public class EdgeFieldTest{
 
     String numAndName;
-    EdgeField field;
+    EdgeField fields;
 
     public EdgeFieldTest(){
         numAndName =  Integer.toString(MainTester.figureNum) + "|" + MainTester.figureName;
