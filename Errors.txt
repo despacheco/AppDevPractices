@@ -1,0 +1,12 @@
+Bug 1
+    Directions
+    1. Options
+    2. Set Output Definition Location
+    3. Select Destination
+    4. Error - The path: "Path of the directory contains no valid output definition files. "
+Cause 
+    1. EdgeConvertGUI.java Lines 938 - 945 ArrayList alProductNames is empty which is why the error is appearing
+    2. Error may be in the getOutputClasses() of the the EdgeConvertGUI file
+    3. setOutputDir method is not working 
+
+Bug 2 
