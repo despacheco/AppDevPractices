@@ -1,0 +1,37 @@
+Define Relations
+
+There are three Options with the Define Relations Section: Bind/Unbind, Define Tables, and Create DDL
+
+Option 1: Bind/Unbind 
+    Part 1: Unbinding
+        Step 1: Select two fields that are related. 
+        Step 2: Select the Bind/Unbind button
+        Step 3: A pop-up box will appear asking if you wish to unbind the selected fileds. 
+            3.a: If you say yes, another pop-up box will appear asking if you are sure.
+                3.a1: If you say no, the relation will not be unbound, and the pop-up box will close. 
+
+            3.b: If you say yes, the relation will be unbound.
+                3.b1: If you say no, the relation will not be unbound.
+            
+    Part 2: Binding
+        Step 1: Select two fields or tables that are related. 
+        Step 2: Select the Bind/Unbind button
+        Step 3: A pop-up box will appear that says you have bound your desired fields.
+            3.a: If the fields you have selected to bind have datatypes that do not match, 
+                you wil not be able to bind those fields. 
+                A pop-up box will appear stating that the fields datatypes do not match. 
+
+            3.b: If the fields you have selected to bind have varchars that do not match, 
+                you wil not be able to bind those fields. 
+                A pop-up box will appear stating that the fields varchars do not match. 
+                
+
+Option 2: Define Tables
+
+
+Option 3: Create DDL
+
+
+
+------------------------------------------------------------------------------------------------------------------
+Creating a Database (DDL)
