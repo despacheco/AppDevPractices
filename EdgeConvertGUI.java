@@ -54,7 +54,7 @@ public class EdgeConvertGUI {
    static DefaultListModel dlmDTTablesAll, dlmDTFieldsTablesAll;
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
-   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout;
+   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpDDL, jmiDTHelpRelations;
    
    //Define Relations screen objects
    static JFrame jfDR;
@@ -66,7 +66,7 @@ public class EdgeConvertGUI {
    static JScrollPane jspDRTablesRelations, jspDRTablesRelatedTo, jspDRFieldsTablesRelations, jspDRFieldsTablesRelatedTo;
    static JMenuBar jmbDRMenuBar;
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
-   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout;
+   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout, jmiDRHelpDDL, jmiDRHelpRelations;
    
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
@@ -145,12 +145,20 @@ public class EdgeConvertGUI {
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDTHelpAbout.addActionListener(menuListener);
+      jmiDTHelpDDL = new JMenuItem("Create DDL");
+      jmiDTHelpDDL.setMnemonic(KeyEvent.VK_A);
+      jmiDTHelpDDL.addActionListener(menuListener);
+      jmiDTHelpRelations = new JMenuItem("Define Relations");
+      jmiDTHelpRelations.setMnemonic(KeyEvent.VK_A);
+      jmiDTHelpRelations.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpAbout);
+      jmDTHelp.add(jmiDTHelpDDL);
+      jmDTHelp.add(jmiDTHelpRelations);
       
       jfcEdge = new JFileChooser();
       jfcOutputDir = new JFileChooser();
-	   effEdge = new ExampleFileFilter("edg", "Edge Diagrammer Files");
-   	effSave = new ExampleFileFilter("sav", "Edge Convert Save Files");
+	    effEdge = new ExampleFileFilter("edg", "Edge Diagrammer Files");
+   	    effSave = new ExampleFileFilter("sav", "Edge Convert Save Files");
       jfcOutputDir.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
       jpDTBottom = new JPanel(new GridLayout(1, 2));
@@ -529,7 +537,15 @@ public class EdgeConvertGUI {
       jmiDRHelpAbout = new JMenuItem("About");
       jmiDRHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDRHelpAbout.addActionListener(menuListener);
+      jmiDRHelpDDL = new JMenuItem("Create DDL");
+      jmiDRHelpDDL.setMnemonic(KeyEvent.VK_A);
+      jmiDRHelpDDL.addActionListener(menuListener);
+      jmiDRHelpRelations = new JMenuItem("Define Relations");
+      jmiDRHelpRelations.setMnemonic(KeyEvent.VK_A);
+      jmiDRHelpRelations.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpAbout);
+      jmDRHelp.add(jmiDRHelpDDL);
+      jmDRHelp.add(jmiDRHelpRelations);
 
       jpDRCenter = new JPanel(new GridLayout(2, 2));
       jpDRCenter1 = new JPanel(new BorderLayout());
@@ -1273,6 +1289,18 @@ public class EdgeConvertGUI {
             JOptionPane.showMessageDialog(null, "EdgeConvert ERD To DDL Conversion Tool\n" +
                                                 "by Stephen A. Capperell\n" +
                                                 " 2007-2008");
+         }
+
+         if ((ae.getSource() == jmiDTHelpDDL) || (ae.getSource() == jmiDRHelpDDL)) {
+            JOptionPane.showMessageDialog(null, "Create DDL\n" +
+                                                "by PootyTang\n" +
+                                                " Fall 2018");
+         }
+
+         if ((ae.getSource() == jmiDTHelpRelations) || (ae.getSource() == jmiDRHelpRelations)) {
+            JOptionPane.showMessageDialog(null, "Define Relations\n" +
+                                                "by PootyTang\n" +
+                                                " Fall 2018");
          }
       } // EdgeMenuListener.actionPerformed()
    } // EdgeMenuListener
