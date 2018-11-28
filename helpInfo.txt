@@ -27,9 +27,15 @@ Option 1: Bind/Unbind
                 
 
 Option 2: Define Tables
+    Step 1: Select the Define Tables option. 
+        Once this option is selected the screen will change to the Define Tables screen.
+        On this screen you have the ability to set all the required information for the a table.
+        This information should include: 
+            
 
 
 Option 3: Create DDL
+
 
 
 
