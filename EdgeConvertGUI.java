@@ -147,8 +147,8 @@ public class EdgeConvertGUI {
       jmiDTHelpAbout.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpAbout);
       
-      //Database Help
-      jmiDTHelpDatabase = new JMenuItem("Create Database");
+      //Open File Help
+      jmiDTHelpDatabase = new JMenuItem("Open a File");
       jmiDTHelpDatabase.setMnemonic(KeyEvent.VK_C);
       jmiDTHelpDatabase.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpDatabase);
@@ -544,13 +544,15 @@ public class EdgeConvertGUI {
       jmiDRHelpAbout.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpAbout);
       
-      //Database Help
-      jmiDRHelpDatabase = new JMenuItem("Create Database");
+      //Open File Help
+      jmiDRHelpDatabase = new JMenuItem("Open a File");
+      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_O);
       jmiDRHelpDatabase.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpDatabase);
-      
-      //Relation Help
+
+      // Relation Help
       jmiDRHelpRelations = new JMenuItem("Define Relations");
+      jmiDRHelpRelations.setMnemonic(KeyEvent.VK_D);
       jmiDRHelpRelations.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpRelations);
 
@@ -1300,8 +1302,26 @@ public class EdgeConvertGUI {
          }
        
           if ((ae.getSource() == jmiDTHelpDatabase) || (ae.getSource() == jmiDRHelpDatabase)) {
-            EdgeCreateDBHelp jfHDD = new EdgeCreateDBHelp();
-          }
+            //EdgeCreateDBHelp jfHDD = new EdgeCreateDBHelp();
+            JOptionPane.showMessageDialog(null,
+                  "Open a File\n" + "\n" +
+
+"There are two options when opening a file: Open an Edge File or Open a Saved File\n" + "\n" +
+
+"Option 1: Open Edge File\n" +
+    "\t\tStep 1: Click on the File tab in the menu bar.\n" +
+    "\t\tStep 2: Select 'Open Edge File'\n" +
+    "\t\tStep 3: A file chooser window will pop-up. Select an Edge file (ex. fileName.edg), and click OK.\n" +
+        "\t\t\t\tResult: This should populate the 'All Tables' section with all the tables within the edge file.\n" + "\n" + 
+
+
+"Option 2: Open Save File\n" +
+    "\t\tStep 1: Click on the File tab in the menu bar.\n" +
+    "\t\tStep 2: Select 'Open Save File'\n" +
+    "\t\tStep 3: A file chooser window will pop-up. Select an saved Edge file (ex. fileName.edg), and click OK.\n" +
+        "\t\t\t\tResult: This should populate the 'All Tables' section with all the tables within the edge file.");
+
+          } // EdgeMenuListener.actionPerformed() -> jmiDRHelpDatabase
          
          if ((ae.getSource() == jmiDTHelpRelations) || (ae.getSource() == jmiDRHelpRelations)) {
             EdgeCreateRHelp jfHR = new EdgeCreateRHelp();
