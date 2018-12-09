@@ -54,7 +54,7 @@ public class EdgeConvertGUI {
    static DefaultListModel dlmDTTablesAll, dlmDTFieldsTablesAll;
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
-   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpDDL, jmiDTHelpRelations;
+   static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpDatabase, jmiDTHelpRelations;
    
    //Define Relations screen objects
    static JFrame jfDR;
@@ -66,7 +66,7 @@ public class EdgeConvertGUI {
    static JScrollPane jspDRTablesRelations, jspDRTablesRelatedTo, jspDRFieldsTablesRelations, jspDRFieldsTablesRelatedTo;
    static JMenuBar jmbDRMenuBar;
    static JMenu jmDRFile, jmDROptions, jmDRHelp;
-   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout, jmiDRHelpDDL, jmiDRHelpRelations;
+   static JMenuItem jmiDROpenEdge, jmiDROpenSave, jmiDRSave, jmiDRSaveAs, jmiDRExit, jmiDROptionsOutputLocation, jmiDROptionsShowProducts, jmiDRHelpAbout, jmiDRHelpDatabase, jmiDRHelpRelations;
    
    public EdgeConvertGUI() {
       menuListener = new EdgeMenuListener();
@@ -154,6 +154,19 @@ public class EdgeConvertGUI {
       jmDTHelp.add(jmiDTHelpAbout);
       jmDTHelp.add(jmiDTHelpDDL);
       jmDTHelp.add(jmiDTHelpRelations);
+      
+      //Open File Help
+      jmiDTHelpDatabase = new JMenuItem("Open a File");
+      jmiDTHelpDatabase.setMnemonic(KeyEvent.VK_C);
+      jmiDTHelpDatabase.addActionListener(menuListener);
+      jmDTHelp.add(jmiDTHelpDatabase);
+      
+      //Relation Help
+      jmiDTHelpRelations = new JMenuItem("Define Relations");
+      jmiDTHelpRelations.setMnemonic(KeyEvent.VK_D);
+      jmiDTHelpRelations.addActionListener(menuListener);
+      jmDTHelp.add(jmiDTHelpRelations);
+
       
       jfcEdge = new JFileChooser();
       jfcOutputDir = new JFileChooser();
@@ -544,8 +557,19 @@ public class EdgeConvertGUI {
       jmiDRHelpRelations.setMnemonic(KeyEvent.VK_A);
       jmiDRHelpRelations.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpAbout);
-      jmDRHelp.add(jmiDRHelpDDL);
+      
+      //Open File Help
+      jmiDRHelpDatabase = new JMenuItem("Open a File");
+      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_O);
+      jmiDRHelpDatabase.addActionListener(menuListener);
+      jmDRHelp.add(jmiDRHelpDatabase);
+
+      // Relation Help
+      jmiDRHelpRelations = new JMenuItem("Define Relations");
+      jmiDRHelpRelations.setMnemonic(KeyEvent.VK_D);
+      jmiDRHelpRelations.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpRelations);
+
 
       jpDRCenter = new JPanel(new GridLayout(2, 2));
       jpDRCenter1 = new JPanel(new BorderLayout());
@@ -1290,18 +1314,79 @@ public class EdgeConvertGUI {
                                                 "by Stephen A. Capperell\n" +
                                                 " 2007-2008");
          }
+       
+          if ((ae.getSource() == jmiDTHelpDatabase) || (ae.getSource() == jmiDRHelpDatabase)) {
+            //EdgeCreateDBHelp jfHDD = new EdgeCreateDBHelp();
+            JOptionPane.showMessageDialog(null,
+                  "Open a File\n" + "\n" +
 
-         if ((ae.getSource() == jmiDTHelpDDL) || (ae.getSource() == jmiDRHelpDDL)) {
-            JOptionPane.showMessageDialog(null, "Create DDL\n" +
-                                                "by PootyTang\n" +
-                                                " Fall 2018");
-         }
+                  "There are two options when opening a file: Open an Edge File or Open a Saved File\n" + "\n" +
 
+                  "Option 1: Open Edge File\n" +
+                     "\t\tStep 1: Click on the File tab in the menu bar.\n" +
+                     "\t\tStep 2: Select 'Open Edge File'\n" +
+                     "\t\tStep 3: A file chooser window will pop-up. Select an Edge file (ex. fileName.edg), and click OK.\n" +
+                        "\t\t\t\tResult: This should populate the 'All Tables' section with all the tables within the edge file.\n" + "\n" + 
+
+
+                  "Option 2: Open Save File\n" +
+                     "\t\tStep 1: Click on the File tab in the menu bar.\n" +
+                     "\t\tStep 2: Select 'Open Save File'\n" +
+                     "\t\tStep 3: A file chooser window will pop-up. Select an saved Edge file (ex. fileName.edg), and click OK.\n" +
+                        "\t\t\t\tResult: This should populate the 'All Tables' section with all the tables within the edge file.");
+            
+
+          } // EdgeMenuListener.actionPerformed() -> jmiDRHelpDatabase
+         
          if ((ae.getSource() == jmiDTHelpRelations) || (ae.getSource() == jmiDRHelpRelations)) {
-            JOptionPane.showMessageDialog(null, "Define Relations\n" +
-                                                "by PootyTang\n" +
-                                                " Fall 2018");
-         }
+            //EdgeCreateRHelp jfHR = new EdgeCreateRHelp();
+            String relInfo = "Define Relations\n" + "\n" +
+
+                        "There are three options with the Define Relations Section: Bind/Unbind, Define Tables, and Create DDL\n"
+                        + "\n" + 
+
+                        "Option 1: Bind/Unbind\n" + 
+                           "\tPart 1: Unbinding\n"
+                              + "\t\tStep 1: Select two fields that are related.\n"
+                              + "\t\tStep 2: Click the Bind/Unbind button\n"
+                              + "\t\tStep 3: A pop-up box will appear asking if you wish to unbind the selected fileds.\n"
+                                 + "\t\t\t3.a: If you say yes, another pop-up box will appear asking if you are sure.\n"
+                                    + "\t\t\t\t3.a1: If you say no, the relation will not be unbound, and the pop-up box will close.\n"
+                                 + "\t\t\t3.b: If you say yes, the relation will be unbound.\n"
+                                    + "\t\t\t\t3.b1: If you say no, the relation will not be unbound.\n" 
+                        + "\n" +
+                           "\tPart 2: Binding\n"  
+                              + "\t\tStep 1: Select two fields or tables that are related.\n"
+                              + "\t\tStep 2: Click the Bind/Unbind button\n"
+                              + "\t\tStep 3: A pop-up box will appear that says you have bound your desired fields.\n"
+                                 + "\t\t\t3.a: If the fields you have selected to bind have datatypes that do not match,\n"
+                                    + "\t\t\t\tyou wil not be able to bind those fields.\n"
+                                    + "\t\t\t\tA pop-up box will appear stating that the fields datatypes do not match.\n" 
+                                 + "\t\t\t3.b: If the fields you have selected to bind have varchars that do not match,\n"
+                                    + "\t\t\t\tyou wil not be able to bind those fields.\n"
+                                    + "\t\t\t\tA pop-up box will appear stating that the fields varchars do not match.\n" 
+                        + "\n" +
+                        "Option 2: Define Tables\n" 
+                           + "\tStep 1: Clcik the Define Tables button.\n"
+                              + "\t\tOnce this button is clicked the screen will change to the Define Tables screen.\n"
+                              + "\t\tOn this screen you have the ability to set all the required information for the a table.\n"
+                        + "\n" 
+                           + "\tStep 2: Set the Datatype by selecting one of the radio buttons (varchar, int, boolean,or double).\n"
+                              + "\t\t2.a: If you select the datatype varchar,the button for setting your varchar length will become available.\n"
+                                 + "\t\t\t2.a1: Select the button called 'Set Varchar Length'\n"
+                                 + "\t\t\t2.a2: A pop-up box will appear asking you to enter a length for the varchar.\n"
+                                    + "\t\t\t\tOnce you enter the varchar length, click OK.\n"
+                           + "\tStep 3: Set or unset Disallow Null by clciking on the checkbox labled 'Disallow Null'.\n"
+                           + "\tStep 4: Set or unset the Primary key by clciking on the checkbox labled 'Primary Key'.\n"
+                           + "\tStep 5: Set the Default Value by clciking on the button that says 'Set Default Value'.\n"
+                                 + "\t\t\tA pop-up window will appear for you to enter your default value. Once you have entered your value,\n"
+                                 + "\t\t\tclick OK.\n" + "\n" +
+
+                        "Option 3: Create DDL\n" 
+                           + "\tStep 1: Click the Create DDL button.\n"
+                            + "\t\tThis will create a DDL for the current file you are working in.";
+            JOptionPane.showMessageDialog(null, relInfo);          
+        }// EdgeMenuListener.actionPerformed() -> jmiDRHelpRelations
       } // EdgeMenuListener.actionPerformed()
    } // EdgeMenuListener
-} // EdgeConvertGUI
+}// EdgeConvertGUI
