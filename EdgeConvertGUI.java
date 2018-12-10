@@ -171,15 +171,8 @@ public class EdgeConvertGUI {
       jmiDTHelpAbout = new JMenuItem("About");
       jmiDTHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDTHelpAbout.addActionListener(menuListener);
-      jmiDTHelpDDL = new JMenuItem("Create DDL");
-      jmiDTHelpDDL.setMnemonic(KeyEvent.VK_A);
-      jmiDTHelpDDL.addActionListener(menuListener);
-      jmiDTHelpRelations = new JMenuItem("Define Relations");
-      jmiDTHelpRelations.setMnemonic(KeyEvent.VK_A);
-      jmiDTHelpRelations.addActionListener(menuListener);
       jmDTHelp.add(jmiDTHelpAbout);
-      jmDTHelp.add(jmiDTHelpDDL);
-      jmDTHelp.add(jmiDTHelpRelations);
+
       
       //Open File Help
       jmiDTHelpDatabase = new JMenuItem("Open a File");
@@ -576,17 +569,11 @@ public class EdgeConvertGUI {
       jmiDRHelpAbout = new JMenuItem("About");
       jmiDRHelpAbout.setMnemonic(KeyEvent.VK_A);
       jmiDRHelpAbout.addActionListener(menuListener);
-      jmiDRHelpDDL = new JMenuItem("Create DDL");
-      jmiDRHelpDDL.setMnemonic(KeyEvent.VK_A);
-      jmiDRHelpDDL.addActionListener(menuListener);
-      jmiDRHelpRelations = new JMenuItem("Define Relations");
-      jmiDRHelpRelations.setMnemonic(KeyEvent.VK_A);
-      jmiDRHelpRelations.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpAbout);
       
       //Open File Help
       jmiDRHelpDatabase = new JMenuItem("Open a File");
-      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_B);
+      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_C);
       jmiDRHelpDatabase.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpDatabase);
 
