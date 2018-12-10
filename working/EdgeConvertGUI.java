@@ -87,20 +87,20 @@ public class EdgeConvertGUI {
    } //showGUI()
    
    //Refactoring
-   public void createJItem(String itemStr, JMenuItem itemName, JMenu jmenuItem, int event) {
+   public JMenuItem createJItem(String itemStr, JMenuItem itemName, int event) {
     itemName = new JMenuItem(itemStr);
     itemName.setMnemonic(event);
     itemName.setEnabled(true);
     itemName.addActionListener(menuListener);
-    jmenuItem.add(itemName);
+    return itemName;
    }
    
-   public void createJItemNotEnabled(String itemStr, JMenuItem itemName, JMenu jmenuItem,int event) {
+   public JMenuItem createJItemNotEnabled(String itemStr, JMenuItem itemName, int event) {
      itemName = new JMenuItem(itemStr);
      itemName.setMnemonic(event);
      itemName.setEnabled(false);
      itemName.addActionListener(menuListener);
-     jmenuItem.add(itemName);
+     return itemName;
    }
    
    public void createDTScreen() {//create Define Tables screen
@@ -121,11 +121,17 @@ public class EdgeConvertGUI {
       jmDTFile.setMnemonic(KeyEvent.VK_F);
       jmbDTMenuBar.add(jmDTFile);
       
-      createJItem("Open Edge File", jmiDTOpenEdge, jmDTFile, KeyEvent.VK_E);
-      createJItem("Open Save File", jmiDTOpenSave, jmDTFile, KeyEvent.VK_V);
-      createJItemNotEnabled("Save", jmiDTSave, jmDTFile, KeyEvent.VK_S);
-      createJItemNotEnabled("Save As...", jmiDTSaveAs, jmDTFile, KeyEvent.VK_A);
-      createJItem("Exit", jmiDTExit, jmDTFile, KeyEvent.VK_X);
+      jmiDTOpenEdge = createJItem("Open Edge File", jmiDTOpenEdge, KeyEvent.VK_E);
+      jmiDTOpenSave = createJItem("Open Save File", jmiDTOpenSave, KeyEvent.VK_V);
+      jmiDTSave = createJItemNotEnabled("Save", jmiDTSave, KeyEvent.VK_S);
+      jmiDTSaveAs = createJItemNotEnabled("Save As...", jmiDTSaveAs, KeyEvent.VK_A);
+      jmiDTExit = createJItem("Exit", jmiDTExit, KeyEvent.VK_X);
+      
+      jmDTFile.add(jmiDTOpenEdge);
+      jmDTFile.add(jmiDTOpenSave);
+      jmDTFile.add(jmiDTSave);
+      jmDTFile.add(jmiDTSaveAs);
+      jmDTFile.add(jmiDTExit);
       
 // jmiDTOpenEdge = new JMenuItem("Open Edge File");
 //       jmiDTOpenEdge.setMnemonic(KeyEvent.VK_E);
