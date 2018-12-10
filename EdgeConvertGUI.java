@@ -55,6 +55,7 @@ public class EdgeConvertGUI {
    static JMenuBar jmbDTMenuBar;
    static JMenu jmDTFile, jmDTOptions, jmDTHelp;
    static JMenuItem jmiDTOpenEdge, jmiDTOpenSave, jmiDTSave, jmiDTSaveAs, jmiDTExit, jmiDTOptionsOutputLocation, jmiDTOptionsShowProducts, jmiDTHelpAbout, jmiDTHelpDatabase, jmiDTHelpRelations, jmiDTHelpDDL;
+   static JMenu jmenuItem;
    
    //Define Relations screen objects
    static JFrame jfDR;
@@ -87,19 +88,21 @@ public class EdgeConvertGUI {
    } //showGUI()
 
    //REFACTORING
-   public void createJItem(String itemStr, JMenuItem itemName, JMenu jmenuItem, int event) {
-    itemName = new JMenuItem(itemStr);
-    itemName.setMnemonic(event);
-    itemName.addActionListener(menuListener);
-    jmenuItem.add(itemName);
+   public JMenuItem createJItem(String itemStr, JMenuItem itemName, int event) {
+      itemName = new JMenuItem(itemStr);
+      itemName.setMnemonic(event);
+      itemName.addActionListener(menuListener);
+      //jmenuItem.add(itemName);
+      return itemName;
    }
 
-   public void createJItemNotEnabled(String itemStr, JMenuItem itemName, JMenu jmenuItem, int event) {
-        itemName = new JMenuItem(itemStr);
-        itemName.setMnemonic(event);
-        itemName.setEnabled(false);
-        itemName.addActionListener(menuListener);
-        jmenuItem.add(itemName);
+   public JMenuItem createJItemNotEnabled(String itemStr, JMenuItem itemName, int event) {
+      itemName = new JMenuItem(itemStr);
+      itemName.setMnemonic(event);
+      itemName.setEnabled(false);
+      itemName.addActionListener(menuListener);
+      //jmenuItem.add(itemName);
+      return itemName;
    }
 
    public void createDTScreen() {//create Define Tables screen
@@ -119,12 +122,12 @@ public class EdgeConvertGUI {
       jmDTFile = new JMenu("File");
       jmDTFile.setMnemonic(KeyEvent.VK_F);
       jmbDTMenuBar.add(jmDTFile);
-
-      createJItem("Open Edge File", jmiDTOpenEdge, jmDTFile, KeyEvent.VK_E);
-      createJItem("Open Save File", jmiDTOpenSave, jmDTFile, KeyEvent.VK_V);
-      createJItemNotEnabled("Save", jmiDTSave, jmDTFile, KeyEvent.VK_S);
-      createJItemNotEnabled("Save As...", jmiDTSaveAs, jmDTFile, KeyEvent.VK_A);
-      createJItem("Exit", jmiDTExit, jmDTFile, KeyEvent.VK_X);
+      
+      jmDTFile.add(createJItem("Open Edge File", jmiDTOpenEdge, KeyEvent.VK_E));
+      jmDTFile.add(createJItem("Open Save File", jmiDTOpenSave, KeyEvent.VK_V));
+      jmDTFile.add(createJItemNotEnabled("Save", jmiDTSave, KeyEvent.VK_S));
+      jmDTFile.add(createJItemNotEnabled("Save As...", jmiDTSaveAs, KeyEvent.VK_A));
+      jmDTFile.add(createJItem("Exit", jmiDTExit, KeyEvent.VK_X));
 
     //   jmiDTOpenEdge = new JMenuItem("Open Edge File");
     //   jmiDTOpenEdge.setMnemonic(KeyEvent.VK_E);
@@ -156,7 +159,7 @@ public class EdgeConvertGUI {
       jmiDTOptionsOutputLocation.setMnemonic(KeyEvent.VK_S);
       jmiDTOptionsOutputLocation.addActionListener(menuListener);
       jmiDTOptionsShowProducts = new JMenuItem("Show Database Products Available");
-      jmiDTOptionsShowProducts.setMnemonic(KeyEvent.VK_H);
+      jmiDTOptionsShowProducts.setMnemonic(KeyEvent.VK_P);
       jmiDTOptionsShowProducts.setEnabled(false);
       jmiDTOptionsShowProducts.addActionListener(menuListener);
       jmDTOptions.add(jmiDTOptionsOutputLocation);
@@ -583,7 +586,7 @@ public class EdgeConvertGUI {
       
       //Open File Help
       jmiDRHelpDatabase = new JMenuItem("Open a File");
-      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_O);
+      jmiDRHelpDatabase.setMnemonic(KeyEvent.VK_B);
       jmiDRHelpDatabase.addActionListener(menuListener);
       jmDRHelp.add(jmiDRHelpDatabase);
 
